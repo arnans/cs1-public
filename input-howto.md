@@ -1,0 +1,1 @@
+Show how to use the gogo board's input ports
