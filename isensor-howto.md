@@ -1,0 +1,1 @@
+Describe how to use the gogo's integrated sensor
