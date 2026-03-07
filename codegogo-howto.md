@@ -1,0 +1,1 @@
+Describe how to connect the gogo board to code.gogoboard.org
