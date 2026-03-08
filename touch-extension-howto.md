@@ -1,0 +1,1 @@
+Describe how to enable the GoGo Touch extension in code.gogoboard.org
