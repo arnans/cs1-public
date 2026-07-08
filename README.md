@@ -20,6 +20,7 @@ This repo hosts reference pages and video tutorials that students access via QR 
 | `code-download-run-howto` | Video tutorial: downloading and running code |
 | `touch-extension-howto` | Video tutorial: adding the GoGo Touch extension |
 | `ch02-game-list` | Reference table of games for controller activities |
+| `teacher-resources/` | Download hub for teacher guides (.docx) and classroom slides (.pptx), all 4 chapters, EN + TH |
 
 ## How shortlinks work
 

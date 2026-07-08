@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>สื่อการสอน — Coding &amp; Robotics | Teacher Resources</title>
+<style>
+  /* Prompt — modern loopless Thai + Latin typeface, served locally for offline use */
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 400; font-display: swap;
+    src: url("fonts/prompt-400-thai.woff2") format("woff2");
+    unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
+  }
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 400; font-display: swap;
+    src: url("fonts/prompt-400-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F, U+2191, U+2193, U+2212, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 600; font-display: swap;
+    src: url("fonts/prompt-600-thai.woff2") format("woff2");
+    unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
+  }
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 600; font-display: swap;
+    src: url("fonts/prompt-600-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F, U+2191, U+2193, U+2212, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 700; font-display: swap;
+    src: url("fonts/prompt-700-thai.woff2") format("woff2");
+    unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
+  }
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 700; font-display: swap;
+    src: url("fonts/prompt-700-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F, U+2191, U+2193, U+2212, U+FEFF, U+FFFD;
+  }
+
+  :root {
+    --bg: #f4f6fa;
+    --card: #ffffff;
+    --ink: #1a2333;
+    --muted: #64748b;
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+    --guide: #7c3aed;
+    --line: #e2e8f0;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Prompt", "Segoe UI", "Leelawadee UI", Tahoma, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px 64px; }
+
+  header.site {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+    color: #fff;
+    padding: 40px 0 44px;
+    margin-bottom: 36px;
+  }
+  header.site .wrap { padding-bottom: 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .site h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.01em; }
+  .site p.sub { margin-top: 8px; font-size: 1.02rem; opacity: 0.92; max-width: 560px; }
+
+  .lang-toggle {
+    display: flex; border-radius: 999px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.45); flex: none; margin-top: 4px;
+  }
+  .lang-toggle button {
+    border: 0; background: transparent; color: #fff;
+    padding: 8px 20px; font-size: 0.95rem; font-family: inherit; cursor: pointer;
+  }
+  .lang-toggle button.active { background: #fff; color: var(--accent-dark); font-weight: 600; }
+
+  section.chapter { margin-bottom: 44px; }
+  .ch-head { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .ch-num {
+    flex: none; width: 44px; height: 44px; border-radius: 12px;
+    background: var(--accent); color: #fff; font-size: 1.25rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ch-head h2 { font-size: 1.4rem; font-weight: 700; }
+  .ch-meta { color: var(--muted); font-size: 0.92rem; margin: 0 0 16px 58px; }
+
+  .guide-card {
+    display: flex; align-items: center; gap: 16px;
+    background: linear-gradient(90deg, #f5f3ff, #ffffff 55%);
+    border: 1px solid #ddd6fe; border-left: 4px solid var(--guide);
+    border-radius: var(--radius); padding: 14px 18px; margin-bottom: 18px;
+  }
+  .guide-card .icon {
+    flex: none; width: 44px; height: 44px; border-radius: 10px; background: var(--guide);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .guide-card .icon svg { width: 24px; height: 24px; fill: #fff; }
+  .guide-card .g-title { font-weight: 600; font-size: 1.02rem; }
+  .guide-card .g-sub { color: var(--muted); font-size: 0.88rem; }
+  .guide-card .grow { flex: 1; min-width: 0; }
+
+  .grid {
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .card:hover { box-shadow: 0 8px 24px rgba(30, 58, 138, 0.12); transform: translateY(-2px); }
+  .card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-bottom: 1px solid var(--line); }
+  .card .body { padding: 12px 14px 14px; display: flex; flex-direction: column; flex: 1; gap: 4px; }
+  .card .session { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+  .card .title { font-weight: 600; font-size: 0.98rem; flex: 1; }
+
+  a.btn {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 10px;
+    background: var(--accent); color: #fff; text-decoration: none;
+    border-radius: 9px; padding: 8px 14px; font-size: 0.9rem; font-weight: 600;
+    align-self: flex-start;
+  }
+  a.btn:hover { background: var(--accent-dark); }
+  a.btn.guide-btn { background: var(--guide); }
+  a.btn.guide-btn:hover { background: #6d28d9; }
+  a.btn svg { width: 15px; height: 15px; fill: currentColor; flex: none; }
+  a.btn .size { font-weight: 400; opacity: 0.85; font-size: 0.82rem; }
+
+  footer { color: var(--muted); font-size: 0.85rem; text-align: center; margin-top: 12px; }
+  noscript { display: block; max-width: 1120px; margin: 40px auto; padding: 0 24px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div>
+      <h1 id="t-title"></h1>
+      <p class="sub" id="t-sub"></p>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button id="btn-th" onclick="setLang('th')">ไทย</button>
+      <button id="btn-en" onclick="setLang('en')">English</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="content"></main>
+
+<noscript>This page requires JavaScript. / หน้านี้ต้องเปิดใช้งาน JavaScript</noscript>
+
+<script>
+const UI = {
+  th: {
+    title: "สื่อการสอน Coding & Robotics",
+    sub: "ดาวน์โหลดคู่มือครูและสไลด์ประกอบการสอนของแต่ละกิจกรรม",
+    guide: "คู่มือครู",
+    guideSub: "แผนการสอน เกณฑ์การประเมิน และแนวทางแก้ปัญหา",
+    session: "หัวข้อที่",
+    sessions: "หัวข้อ",
+    download: "ดาวน์โหลด",
+    slides: "สไลด์",
+    footer: "ไฟล์สไลด์เป็น PowerPoint (.pptx) และคู่มือครูเป็น Word (.docx)",
+  },
+  en: {
+    title: "Coding & Robotics Teacher Resources",
+    sub: "Download the teacher guide and classroom slides for each activity.",
+    guide: "Teacher Guide",
+    guideSub: "Lesson plans, assessment rubrics, and troubleshooting",
+    session: "Session",
+    sessions: "sessions",
+    download: "Download",
+    slides: "Slides",
+    footer: "Slides are PowerPoint (.pptx); teacher guides are Word (.docx).",
+  },
+};
+
+// sizes in bytes: [en, th]
+const CHAPTERS = [
+  {
+    num: 1, dir: "ch01-what-is-coding", guideBase: "ch01-teacher-guide",
+    guideSize: [2011195, 2012520],
+    title: { en: "What is Coding?", th: "การเขียนโปรแกรมคืออะไร" },
+    sessions: [
+      { base: "session1-navigate-maze-by-hand", size: [5668236, 6506607],
+        title: { en: "Navigate the Maze — by Hand", th: "ฝ่าเขาวงกต — ด้วยรีโมต" } },
+      { base: "session2-navigate-maze-with-code", size: [436980, 1532598],
+        title: { en: "Navigate the Maze — with Code", th: "ฝ่าเขาวงกต — ด้วยโค้ด" } },
+      { base: "session3-fix-the-code", size: [1072042, 1330694],
+        title: { en: "Fix the Code When the Maze Changes", th: "แก้โค้ดเมื่อเขาวงกตเปลี่ยน" } },
+      { base: "session4-draw-patterns", size: [5275894, 5530941],
+        title: { en: "Draw Patterns with Code", th: "วาดลวดลายด้วยโค้ด" } },
+      { base: "session5-assessment", size: [1932518, 3011953],
+        title: { en: "Assessment — Draw a Letter", th: "ประเมินผล — วาดตัวอักษร" } },
+    ],
+  },
+  {
+    num: 2, dir: "ch02-sensors-and-conditions", guideBase: "ch02-teacher-guide",
+    guideSize: [1239858, 1242099],
+    title: { en: "Sensors and Conditions", th: "การใช้งานเซ็นเซอร์และอุปกรณ์เอาต์พุต" },
+    sessions: [
+      { base: "session1-exploring-sensors", size: [14656057, 14924346],
+        title: { en: "Exploring Sensors and Actuators", th: "ลองใช้เซ็นเซอร์และอุปกรณ์เอาต์พุต" } },
+      { base: "session2-first-program", size: [1127601, 1402100],
+        title: { en: "Our First Program", th: "สร้างโปรแกรมแรกของเรา" } },
+      { base: "session3-if-block", size: [162346, 425704],
+        title: { en: "Making Decisions with the If Block", th: "การใช้บล็อกคำสั่ง If เพื่อสร้างเงื่อนไข" } },
+      { base: "session4-game-controller", size: [4615261, 4877748],
+        title: { en: "Building a Game Controller", th: "สร้างเกมคอนโทรลเลอร์" } },
+      { base: "session5-gogo-touch", size: [8376152, 8646477],
+        title: { en: "GoGo Touch Controller", th: "เกมคอนโทรลเลอร์ GoGo Touch" } },
+      { base: "session6-assessment", size: [1264417, 1526990],
+        title: { en: "Assessment — Tilt Controller", th: "ประเมินผล — เกมคอนโทรลเลอร์แบบเอียงบอร์ด" } },
+    ],
+  },
+  {
+    num: 3, dir: "ch03-interactive-games", guideBase: "ch03-teacher-guide",
+    guideSize: [24835, 27153],
+    title: { en: "Interactive Games with Sensors", th: "การสร้างเกมและควบคุมด้วยเซ็นเซอร์" },
+    sessions: [
+      { base: "session1-hands-on-scratch", size: [2731287, 2994510],
+        title: { en: "Hands-on with Scratch", th: "ฝึกใช้ Scratch" } },
+      { base: "session2-gogo-scratch", size: [616520, 881879],
+        title: { en: "Connecting GoGo Board to Scratch", th: "เชื่อมต่อ GoGo Board กับ Scratch" } },
+      { base: "session3-race-game", size: [601583, 866545],
+        title: { en: "The Running Race Game", th: "เกมวิ่งแข่ง" } },
+      { base: "session4-design-game", size: [3670605, 3927409],
+        title: { en: "Design Our Own Game", th: "ออกแบบเกมเอง" } },
+      { base: "session5-showcase", size: [2117235, 2372758],
+        title: { en: "Game Showcase", th: "โชว์ผลงานเกม" } },
+      { base: "session6-assessment", size: [913934, 1171996],
+        title: { en: "Assessment — Musical Instrument", th: "ประเมินผล — เครื่องดนตรี" } },
+    ],
+  },
+  {
+    num: 4, dir: "ch04-ai-control", guideBase: "ch04-teacher-guide",
+    guideSize: [215082, 217287],
+    title: { en: "AI Control", th: "ฝึกใช้ AI ควบคุมหุ่นยนต์" },
+    sessions: [
+      { base: "session1-pretrained-ai", size: [2202185, 2467591],
+        title: { en: "What Is AI? + Rock–Paper–Scissors", th: "AI คืออะไร + เกมเป่ายิ้งฉุบ" } },
+      { base: "session2-train-model", size: [754823, 1016714],
+        title: { en: "Training Our Own AI Model", th: "ฝึกโมเดล AI ของเราเอง" } },
+      { base: "session3-gesture-robot", size: [4304463, 4571640],
+        title: { en: "Gesture-Controlled Robot Car", th: "ควบคุมรถหุ่นยนต์ด้วยท่าทาง" } },
+      { base: "session4-assessment", size: [1424167, 1686503],
+        title: { en: "Assessment — AI Game Controller", th: "ประเมินผล — เกมคอนโทรลเลอร์ AI" } },
+    ],
+  },
+];
+
+const ICON_DL = '<svg viewBox="0 0 24 24"><path d="M12 16l-6-6h4V3h4v7h4l-6 6zm-8 2h16v3H4v-3z"/></svg>';
+const ICON_DOC = '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-5 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>';
+
+function fmtSize(bytes) {
+  const mb = bytes / 1048576;
+  return mb >= 1 ? mb.toFixed(1) + " MB" : Math.round(bytes / 1024) + " KB";
+}
+
+function render(lang) {
+  const t = UI[lang], i = lang === "th" ? 1 : 0, suffix = lang === "th" ? "-th" : "";
+  document.documentElement.lang = lang;
+  document.getElementById("t-title").textContent = t.title;
+  document.getElementById("t-sub").textContent = t.sub;
+  document.getElementById("btn-th").className = lang === "th" ? "active" : "";
+  document.getElementById("btn-en").className = lang === "en" ? "active" : "";
+
+  let html = "";
+  for (const ch of CHAPTERS) {
+    const guideHref = `${ch.dir}/teacher-guide/renders/${ch.guideBase}${suffix}.docx`;
+    html += `
+    <section class="chapter">
+      <div class="ch-head">
+        <div class="ch-num">${ch.num}</div>
+        <h2>${ch.title[lang]}</h2>
+      </div>
+      <p class="ch-meta">${ch.sessions.length} ${t.sessions} · ${t.guide} · ${t.slides} (.pptx)</p>
+      <div class="guide-card">
+        <div class="icon">${ICON_DOC}</div>
+        <div class="grow">
+          <div class="g-title">${t.guide}</div>
+          <div class="g-sub">${t.guideSub}</div>
+        </div>
+        <a class="btn guide-btn" href="${guideHref}" download>${ICON_DL}${t.download} <span class="size">(${fmtSize(ch.guideSize[i])})</span></a>
+      </div>
+      <div class="grid">`;
+    ch.sessions.forEach((s, idx) => {
+      const href = `${ch.dir}/slides/renders/${s.base}${suffix}.pptx`;
+      html += `
+        <div class="card">
+          <img src="thumbs/ch0${ch.num}-s${idx + 1}.jpg" alt="" loading="lazy">
+          <div class="body">
+            <div class="session">${t.session} ${idx + 1}</div>
+            <div class="title">${s.title[lang]}</div>
+            <a class="btn" href="${href}" download>${ICON_DL}${t.download} <span class="size">(${fmtSize(s.size[i])})</span></a>
+          </div>
+        </div>`;
+    });
+    html += `
+      </div>
+    </section>`;
+  }
+  html += `<footer>${t.footer}</footer>`;
+  document.getElementById("content").innerHTML = html;
+}
+
+function setLang(lang) {
+  try { localStorage.setItem("tr-lang", lang); } catch (e) {}
+  render(lang);
+}
+
+let lang = "th";
+try { lang = localStorage.getItem("tr-lang") || "th"; } catch (e) {}
+const urlLang = new URLSearchParams(location.search).get("lang");
+if (urlLang === "en" || urlLang === "th") lang = urlLang;
+render(lang);
+</script>
+</body>
+</html>
