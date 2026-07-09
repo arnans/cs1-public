@@ -36,11 +36,11 @@ must match the book-cs1 source exactly.
 
 `videos/` (the demo-video index, added 2026-07-09) is **byte-identical** to
 the book-cs1 source: its thumbnails live in its own `videos/thumbs/`, fonts
-resolve via `../fonts/` in both layouts, and there are no download links yet
-(clips are still being filmed — every card shows a "coming soon" state).
-Future video links will be external (YouTube / `d.gogoboard.org/v-*`), so
-this subfolder never needs the link-prefix edit — sync it with a plain
-`cp -r`.
+resolve via `../fonts/` in both layouts, and video links are external
+(YouTube, later `d.gogoboard.org/v-*`), so this subfolder never needs the
+link-prefix edit — sync it with a plain `cp -r`. Links are per-language
+(`url: {th, en}` in the `CHAPTERS` data); clips still being filmed have no
+`url` and show a "coming soon" state.
 
 ## How to re-sync from book-cs1
 

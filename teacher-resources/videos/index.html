@@ -108,7 +108,7 @@
   }
   .card:hover { box-shadow: 0 8px 24px rgba(30, 58, 138, 0.12); transform: translateY(-2px); }
 
-  .thumb { position: relative; }
+  .thumb { position: relative; display: block; }
   .thumb img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-bottom: 1px solid var(--line); }
   .thumb .play {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
@@ -118,6 +118,17 @@
     background: rgba(17, 24, 39, 0.55); display: flex; align-items: center; justify-content: center;
   }
   .thumb .play svg { width: 18px; height: 18px; fill: #fff; margin-left: 3px; }
+  a.thumb .play span { background: rgba(37, 99, 235, 0.92); }
+  a.thumb:hover .play span { background: var(--accent-dark); }
+
+  a.btn {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 8px;
+    background: var(--accent); color: #fff; text-decoration: none;
+    border-radius: 9px; padding: 7px 14px; font-size: 0.88rem; font-weight: 600;
+    align-self: flex-start;
+  }
+  a.btn:hover { background: var(--accent-dark); }
+  a.btn svg { width: 14px; height: 14px; fill: currentColor; flex: none; }
 
   .card .body { padding: 12px 14px 14px; display: flex; flex-direction: column; flex: 1; gap: 6px; }
   .chips { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
@@ -170,22 +181,26 @@ const UI = {
     title: "วิดีโอสาธิต Coding & Robotics",
     sub: "คลิปเทคนิคและคลิปสาธิตกิจกรรมของแต่ละบท สำหรับเปิดดูก่อนสอนหรือเปิดในชั้นเรียน",
     back: "← กลับไปหน้าสื่อการสอน",
-    notice: "คลิปทั้งหมดอยู่ระหว่างการถ่ายทำ หน้านี้แสดงรายการคลิปที่วางแผนไว้ และจะเพิ่มลิงก์วิดีโอเมื่อถ่ายทำเสร็จ",
+    notice: "คลิปกำลังทยอยถ่ายทำและเพิ่มเข้ามา คลิปที่ยังไม่เสร็จจะแสดงคำว่า เร็ว ๆ นี้",
     clips: "คลิป",
     tech: "คลิปเทคนิค",
     demo: "สาธิตกิจกรรม",
     soon: "เร็ว ๆ นี้",
+    watch: "ดูวิดีโอ",
+    watchOther: "ดูวิดีโอ (ภาษาอังกฤษ)",
     footer: "คลิปความยาวประมาณ 1 ถึง 3 นาที มีคำบรรยายทั้งภาษาไทยและภาษาอังกฤษ",
   },
   en: {
     title: "Coding & Robotics Demo Videos",
     sub: "Technique and activity-demo clips for each chapter — preview before class or play as a live demo.",
     back: "← Back to teacher resources",
-    notice: "All clips are currently in production. This page lists the planned videos; links will be added as filming completes.",
+    notice: "Clips are being filmed and added over time. Cards marked coming soon will get links as filming completes.",
     clips: "clips",
     tech: "Technique",
     demo: "Activity demo",
     soon: "Coming soon",
+    watch: "Watch",
+    watchOther: "Watch (Thai version)",
     footer: "Clips run about 1–3 minutes each, with Thai and English captions.",
   },
 };
@@ -252,6 +267,7 @@ const CHAPTERS = [
           th: "รูปแบบ ถ้าเซ็นเซอร์ทำงานให้ส่งปุ่มกด: ทดสอบในโปรแกรมพิมพ์ข้อความก่อน และระวังว่าปุ่มกดจะไปยังหน้าต่างที่คลิกไว้ล่าสุด เทคนิคที่ใช้บ่อยที่สุดในเล่ม",
         } },
       { id: "D8", kind: "demo", thumb: "d8",
+        url: { th: "https://youtu.be/FJJOhCvGXp8" },
         use: { en: "Activity 2.4", th: "กิจกรรมที่ 2.4" },
         title: { en: "Vibration-Pad Dinosaur Game Controller", th: "ควบคุมเกมไดโนเสาร์ด้วยแป้นเคาะ" },
         desc: {
@@ -333,12 +349,21 @@ function render(lang) {
       <p class="ch-meta">${ch.clips.length} ${t.clips}</p>
       <div class="grid">`;
     for (const c of ch.clips) {
+      // url is per-language; fall back to the other language's video if only one exists
+      const href = c.url ? (c.url[lang] || c.url.th || c.url.en) : null;
+      const watchLabel = c.url && c.url[lang] ? t.watch : t.watchOther;
+      const thumbInner = `
+            <img src="thumbs/${c.thumb}.jpg" alt="" loading="lazy">
+            <div class="play"><span>${ICON_PLAY}</span></div>`;
+      const thumb = href
+        ? `<a class="thumb" href="${href}" target="_blank" rel="noopener">${thumbInner}</a>`
+        : `<div class="thumb">${thumbInner}</div>`;
+      const action = href
+        ? `<a class="btn" href="${href}" target="_blank" rel="noopener">${ICON_PLAY}${watchLabel}</a>`
+        : `<span class="soon">${ICON_CLOCK}${t.soon}</span>`;
       html += `
         <div class="card">
-          <div class="thumb">
-            <img src="thumbs/${c.thumb}.jpg" alt="" loading="lazy">
-            <div class="play"><span>${ICON_PLAY}</span></div>
-          </div>
+          ${thumb}
           <div class="body">
             <div class="chips">
               <span class="chip-id">${c.id}</span>
@@ -347,7 +372,7 @@ function render(lang) {
             <div class="title">${c.title[lang]}</div>
             <div class="desc">${c.desc[lang]}</div>
             <div class="use">${c.use[lang]}</div>
-            <span class="soon">${ICON_CLOCK}${t.soon}</span>
+            ${action}
           </div>
         </div>`;
     }
