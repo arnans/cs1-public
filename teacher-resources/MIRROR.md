@@ -32,6 +32,16 @@ const href = `${ch.dir}/slides/renders/${s.base}${suffix}.pptx`;
 Everything else (the `CHAPTERS` data — titles, session bases, file sizes)
 must match the book-cs1 source exactly.
 
+## videos/ — no divergence
+
+`videos/` (the demo-video index, added 2026-07-09) is **byte-identical** to
+the book-cs1 source: its thumbnails live in its own `videos/thumbs/`, fonts
+resolve via `../fonts/` in both layouts, and there are no download links yet
+(clips are still being filmed — every card shows a "coming soon" state).
+Future video links will be external (YouTube / `d.gogoboard.org/v-*`), so
+this subfolder never needs the link-prefix edit — sync it with a plain
+`cp -r`.
+
 ## How to re-sync from book-cs1
 
 When book-cs1 re-renders teacher guides or slides, or edits `index.html`:
@@ -41,7 +51,7 @@ SRC="path/to/book-cs1"
 DST="path/to/cs1-public/teacher-resources"
 cp "$SRC/teacher-resources/index.html" "$DST/index.html"
 # re-apply the `../` -> `` link-prefix edit above in $DST/index.html
-cp -r "$SRC/teacher-resources/fonts" "$SRC/teacher-resources/thumbs" "$DST/"
+cp -r "$SRC/teacher-resources/fonts" "$SRC/teacher-resources/thumbs" "$SRC/teacher-resources/videos" "$DST/"
 for ch in ch01-what-is-coding ch02-sensors-and-conditions ch03-interactive-games ch04-ai-control; do
   cp "$SRC/$ch/teacher-guide/renders/"*.docx "$DST/$ch/teacher-guide/renders/"
   cp "$SRC/$ch/slides/renders/"*.pptx "$DST/$ch/slides/renders/"

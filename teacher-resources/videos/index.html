@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>วิดีโอสาธิต — Coding &amp; Robotics | Demo Videos</title>
+<style>
+  /* Prompt — served from the parent teacher-resources folder for offline use */
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 400; font-display: swap;
+    src: url("../fonts/prompt-400-thai.woff2") format("woff2");
+    unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
+  }
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 400; font-display: swap;
+    src: url("../fonts/prompt-400-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F, U+2191, U+2193, U+2212, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 600; font-display: swap;
+    src: url("../fonts/prompt-600-thai.woff2") format("woff2");
+    unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
+  }
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 600; font-display: swap;
+    src: url("../fonts/prompt-600-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F, U+2191, U+2193, U+2212, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 700; font-display: swap;
+    src: url("../fonts/prompt-700-thai.woff2") format("woff2");
+    unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
+  }
+  @font-face {
+    font-family: "Prompt"; font-style: normal; font-weight: 700; font-display: swap;
+    src: url("../fonts/prompt-700-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F, U+2191, U+2193, U+2212, U+FEFF, U+FFFD;
+  }
+
+  :root {
+    --bg: #f4f6fa;
+    --card: #ffffff;
+    --ink: #1a2333;
+    --muted: #64748b;
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+    --tech: #7c3aed;
+    --line: #e2e8f0;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Prompt", "Segoe UI", "Leelawadee UI", Tahoma, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px 64px; }
+
+  header.site {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+    color: #fff;
+    padding: 40px 0 44px;
+    margin-bottom: 28px;
+  }
+  header.site .wrap { padding-bottom: 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .site h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.01em; }
+  .site p.sub { margin-top: 8px; font-size: 1.02rem; opacity: 0.92; max-width: 620px; }
+  .site a.back { color: #fff; opacity: 0.85; font-size: 0.9rem; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+  .site a.back:hover { opacity: 1; text-decoration: underline; }
+
+  .lang-toggle {
+    display: flex; border-radius: 999px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.45); flex: none; margin-top: 4px;
+  }
+  .lang-toggle button {
+    border: 0; background: transparent; color: #fff;
+    padding: 8px 20px; font-size: 0.95rem; font-family: inherit; cursor: pointer;
+  }
+  .lang-toggle button.active { background: #fff; color: var(--accent-dark); font-weight: 600; }
+
+  .notice {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid #f59e0b;
+    border-radius: var(--radius); padding: 14px 18px; margin-bottom: 36px;
+    color: #78350f; font-size: 0.95rem;
+  }
+  .notice svg { flex: none; width: 20px; height: 20px; fill: #f59e0b; margin-top: 2px; }
+
+  section.chapter { margin-bottom: 44px; }
+  .ch-head { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .ch-num {
+    flex: none; width: 44px; height: 44px; border-radius: 12px;
+    background: var(--accent); color: #fff; font-size: 1.25rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ch-head h2 { font-size: 1.4rem; font-weight: 700; }
+  .ch-meta { color: var(--muted); font-size: 0.92rem; margin: 0 0 16px 58px; }
+
+  .grid {
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .card:hover { box-shadow: 0 8px 24px rgba(30, 58, 138, 0.12); transform: translateY(-2px); }
+
+  .thumb { position: relative; }
+  .thumb img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-bottom: 1px solid var(--line); }
+  .thumb .play {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  }
+  .thumb .play span {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: rgba(17, 24, 39, 0.55); display: flex; align-items: center; justify-content: center;
+  }
+  .thumb .play svg { width: 18px; height: 18px; fill: #fff; margin-left: 3px; }
+
+  .card .body { padding: 12px 14px 14px; display: flex; flex-direction: column; flex: 1; gap: 6px; }
+  .chips { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .chip-id {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+    background: var(--ink); color: #fff; border-radius: 6px; padding: 1px 8px;
+  }
+  .chip-kind { font-size: 0.72rem; font-weight: 600; border-radius: 6px; padding: 1px 8px; }
+  .chip-kind.tech { background: #ede9fe; color: var(--tech); }
+  .chip-kind.demo { background: #dbeafe; color: var(--accent-dark); }
+  .card .title { font-weight: 600; font-size: 0.98rem; }
+  .card .desc { color: var(--muted); font-size: 0.85rem; flex: 1; }
+  .card .use { color: var(--muted); font-size: 0.78rem; }
+
+  span.soon {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 8px;
+    background: #eef2f7; color: #94a3b8;
+    border: 1px dashed #cbd5e1; border-radius: 9px; padding: 7px 14px;
+    font-size: 0.88rem; font-weight: 600; align-self: flex-start;
+  }
+  span.soon svg { width: 14px; height: 14px; fill: currentColor; flex: none; }
+
+  footer { color: var(--muted); font-size: 0.85rem; text-align: center; margin-top: 12px; }
+  noscript { display: block; max-width: 1120px; margin: 40px auto; padding: 0 24px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div>
+      <a class="back" id="t-back" href="../"></a>
+      <h1 id="t-title"></h1>
+      <p class="sub" id="t-sub"></p>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button id="btn-th" onclick="setLang('th')">ไทย</button>
+      <button id="btn-en" onclick="setLang('en')">English</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="content"></main>
+
+<noscript>This page requires JavaScript. / หน้านี้ต้องเปิดใช้งาน JavaScript</noscript>
+
+<script>
+const UI = {
+  th: {
+    title: "วิดีโอสาธิต Coding & Robotics",
+    sub: "คลิปเทคนิคและคลิปสาธิตกิจกรรมของแต่ละบท สำหรับเปิดดูก่อนสอนหรือเปิดในชั้นเรียน",
+    back: "← กลับไปหน้าสื่อการสอน",
+    notice: "คลิปทั้งหมดอยู่ระหว่างการถ่ายทำ หน้านี้แสดงรายการคลิปที่วางแผนไว้ และจะเพิ่มลิงก์วิดีโอเมื่อถ่ายทำเสร็จ",
+    clips: "คลิป",
+    tech: "คลิปเทคนิค",
+    demo: "สาธิตกิจกรรม",
+    soon: "เร็ว ๆ นี้",
+    footer: "คลิปความยาวประมาณ 1 ถึง 3 นาที มีคำบรรยายทั้งภาษาไทยและภาษาอังกฤษ",
+  },
+  en: {
+    title: "Coding & Robotics Demo Videos",
+    sub: "Technique and activity-demo clips for each chapter — preview before class or play as a live demo.",
+    back: "← Back to teacher resources",
+    notice: "All clips are currently in production. This page lists the planned videos; links will be added as filming completes.",
+    clips: "clips",
+    tech: "Technique",
+    demo: "Activity demo",
+    soon: "Coming soon",
+    footer: "Clips run about 1–3 minutes each, with Thai and English captions.",
+  },
+};
+
+// kind: "tech" = reusable technique clip, "demo" = activity payoff demo
+const CHAPTERS = [
+  {
+    num: 1,
+    title: { en: "What is Coding?", th: "การเขียนโปรแกรมคืออะไร" },
+    clips: [
+      { id: "T1", kind: "tech", thumb: "t1",
+        use: { en: "Used in Chapters 1 & 4", th: "ใช้ในบทที่ 1 และ 4" },
+        title: { en: "Configure the Robot via USB", th: "ตั้งค่าหุ่นยนต์ผ่าน USB" },
+        desc: {
+          en: "The four-step Robot Settings on pgc.gogoboard.org: connect via USB, enter the WiFi details, set the Robot ID, then press Configure Robot.",
+          th: "ตั้งค่าหุ่นยนต์ 4 ขั้นตอนบน pgc.gogoboard.org: เชื่อมต่อผ่าน USB กรอกข้อมูล WiFi กำหนด Robot ID แล้วกดปุ่ม Configure Robot",
+        } },
+      { id: "T2", kind: "tech", thumb: "t2",
+        use: { en: "Used in Chapter 1", th: "ใช้ในบทที่ 1" },
+        title: { en: "Record and Replay with the IR Remote", th: "บันทึกและเล่นซ้ำด้วยรีโมต IR" },
+        desc: {
+          en: "Drive the robot with the IR remote, press * to record and # to replay, and read the purple LED strip as the running indicator.",
+          th: "บังคับหุ่นยนต์ด้วยรีโมต IR กดปุ่ม * เพื่อบันทึก กดปุ่ม # เพื่อเล่นซ้ำ และสังเกตไฟวิ่งสีม่วงขณะโปรแกรมทำงาน",
+        } },
+      { id: "T3", kind: "tech", thumb: "t3",
+        use: { en: "Used in Chapter 1", th: "ใช้ในบทที่ 1" },
+        title: { en: "Sync Recorded Blocks to the Webapp", th: "ซิงก์บล็อกที่บันทึกไว้ไปยังเว็บแอป" },
+        desc: {
+          en: "Enter the Robot ID in the webapp and press Upload. The recorded blocks appear, ready to edit and Run Code over WiFi.",
+          th: "ใส่ Robot ID ในเว็บแอปแล้วกด Upload บล็อกที่บันทึกไว้จะปรากฏขึ้น พร้อมให้แก้ไขและกด Run Code ผ่าน WiFi",
+        } },
+      { id: "D1", kind: "demo", thumb: "d1",
+        use: { en: "Activity 1.1", th: "กิจกรรมที่ 1.1" },
+        title: { en: "Maze: Record, Replay, and the Moved Start", th: "เขาวงกต: บันทึก เล่นซ้ำ และย้ายตำแหน่งเริ่มต้น" },
+        desc: {
+          en: "Record a maze run, replay it three times, then move the starting position and watch the robot miss. The chapter's key idea in 90 seconds.",
+          th: "บันทึกเส้นทางในเขาวงกต เล่นซ้ำ 3 ครั้ง แล้วลองย้ายตำแหน่งเริ่มต้นเพื่อดูว่ารถหุ่นยนต์ไปไม่ถึงเป้าหมาย ประเด็นสำคัญของบทนี้ใน 90 วินาที",
+        } },
+      { id: "D4", kind: "demo", thumb: "d4",
+        use: { en: "Activity 1.4", th: "กิจกรรมที่ 1.4" },
+        title: { en: "Draw Patterns with the Repeat Block", th: "วาดลวดลายด้วยบล็อก Repeat" },
+        desc: {
+          en: "A pen strapped to the robot: forward and turn inside Repeat 4 draws a square. Change the number and new patterns emerge.",
+          th: "ติดปากกากับรถหุ่นยนต์ ใช้บล็อก Repeat 4 รอบวาดรูปสี่เหลี่ยม แล้วลองเปลี่ยนตัวเลขเพื่อให้เกิดลวดลายใหม่",
+        } },
+    ],
+  },
+  {
+    num: 2,
+    title: { en: "Sensors and Conditions", th: "การใช้งานเซ็นเซอร์และอุปกรณ์เอาต์พุต" },
+    clips: [
+      { id: "T4", kind: "tech", thumb: "t4",
+        use: { en: "Used in Chapters 2–4", th: "ใช้ในบทที่ 2 ถึง 4" },
+        title: { en: "Connect to code.gogoboard.org via USB", th: "เชื่อมต่อกับ code.gogoboard.org ผ่าน USB" },
+        desc: {
+          en: "Connect the GoGo Board over USB, test with a beep, and see the difference between Download and Run.",
+          th: "เชื่อมต่อ GoGo Board ผ่าน USB ทดสอบด้วยเสียงบี๊บ และเข้าใจความแตกต่างระหว่าง Download กับ Run",
+        } },
+      { id: "T6", kind: "tech", thumb: "t6",
+        use: { en: "Used in Chapters 2–4", th: "ใช้ในบทที่ 2 ถึง 4" },
+        title: { en: "Send Keyboard Keys from the GoGo Board", th: "ส่งปุ่มกดแป้นพิมพ์จาก GoGo Board" },
+        desc: {
+          en: "The if-sensor-then-tap-key pattern: test in a text editor first, and watch the window focus. The most reused technique in the book.",
+          th: "รูปแบบ ถ้าเซ็นเซอร์ทำงานให้ส่งปุ่มกด: ทดสอบในโปรแกรมพิมพ์ข้อความก่อน และระวังว่าปุ่มกดจะไปยังหน้าต่างที่คลิกไว้ล่าสุด เทคนิคที่ใช้บ่อยที่สุดในเล่ม",
+        } },
+      { id: "D8", kind: "demo", thumb: "d8",
+        use: { en: "Activity 2.4", th: "กิจกรรมที่ 2.4" },
+        title: { en: "Vibration-Pad Dinosaur Game Controller", th: "ควบคุมเกมไดโนเสาร์ด้วยแป้นเคาะ" },
+        desc: {
+          en: "Tape a vibration sensor under cardboard, read the idle and tap values on the LCD, choose a threshold, then play the Dinosaur Game.",
+          th: "ติดเซ็นเซอร์แรงสั่นใต้แผ่นกระดาษแข็ง อ่านค่าตอนนิ่งและตอนเคาะจากหน้าจอ LCD เลือกค่าเกณฑ์ แล้วเล่นเกมไดโนเสาร์",
+        } },
+    ],
+  },
+  {
+    num: 3,
+    title: { en: "Interactive Games with Sensors", th: "การสร้างเกมและควบคุมด้วยเซ็นเซอร์" },
+    clips: [
+      { id: "D12", kind: "demo", thumb: "d12",
+        use: { en: "Activity 3.2", th: "กิจกรรมที่ 3.2" },
+        title: { en: "Dual-System Jump Game (GoGo Board + Scratch)", th: "เกมกระโดดแบบสองระบบ (GoGo Board + Scratch)" },
+        desc: {
+          en: "The dual-system chain: the button sends Space, tested in a text editor first, then click the Scratch window and the cat jumps.",
+          th: "การเขียนโปรแกรมคู่ขนานสองระบบ: เซ็นเซอร์ปุ่มส่งปุ่ม Space ทดสอบในโปรแกรมพิมพ์ข้อความก่อน แล้วคลิกหน้าต่าง Scratch เพื่อให้แมวกระโดด",
+        } },
+      { id: "D13", kind: "demo", thumb: "d13",
+        use: { en: "Activity 3.3", th: "กิจกรรมที่ 3.3" },
+        title: { en: "Running Race: Step Pad vs Microphone", th: "เกมวิ่งแข่ง: เซ็นเซอร์เหยียบกับไมโครโฟน" },
+        desc: {
+          en: "Step-pad Cat races microphone Horse. The Horse runs away on raw loudness until the divisor is tuned to make the race fair.",
+          th: "แมวใช้เซ็นเซอร์เหยียบแข่งกับม้าที่ใช้ไมโครโฟน ม้าจะวิ่งนำถ้าใช้ค่าความดังโดยตรง จนกว่าจะปรับตัวหารให้การแข่งขันยุติธรรม",
+        } },
+    ],
+  },
+  {
+    num: 4,
+    title: { en: "AI Control", th: "ฝึกใช้ AI ควบคุมหุ่นยนต์" },
+    clips: [
+      { id: "T8", kind: "tech", thumb: "t8",
+        use: { en: "Used in Chapter 4", th: "ใช้ในบทที่ 4" },
+        title: { en: "Train a Model in Teachable Machine", th: "ฝึกโมเดลใน Teachable Machine" },
+        desc: {
+          en: "Create an image project with an Other class, record varied images, train the model, read the confidence bars, then export a sharable link.",
+          th: "สร้างโปรเจกต์ภาพพร้อมคลาส Other เก็บภาพหลากหลายมุม ฝึกโมเดล อ่านแถบความมั่นใจ แล้วกด Export Model เพื่อรับลิงก์สำหรับแชร์",
+        } },
+      { id: "T9", kind: "tech", thumb: "t9",
+        use: { en: "Used in Chapter 4", th: "ใช้ในบทที่ 4" },
+        title: { en: "Set Up a Broadcast Channel", th: "ตั้งค่าช่องสัญญาณ" },
+        desc: {
+          en: "Paste the model link into the Teachable Machine card, set the channel number, and add the matching broadcast blocks on the board side.",
+          th: "วางลิงก์โมเดลในการ์ด Teachable Machine ตั้งหมายเลขช่องสัญญาณ แล้วใส่บล็อกรับส่งสัญญาณฝั่งบอร์ดให้ตรงกัน",
+        } },
+      { id: "D17", kind: "demo", thumb: "d17",
+        use: { en: "Activity 4.3", th: "กิจกรรมที่ 4.3" },
+        title: { en: "Gesture-Controlled Robot Car", th: "รถหุ่นยนต์บังคับด้วยท่าทาง" },
+        desc: {
+          en: "The book's finale: a six-class model, the Teachable Machine card and channel, When-receive blocks, then driving the car with hand gestures.",
+          th: "กิจกรรมปิดท้ายของเล่ม: โมเดล 6 คลาส การ์ด Teachable Machine กับช่องสัญญาณ และบล็อก When-receive แล้วบังคับรถหุ่นยนต์ด้วยท่าทาง",
+        } },
+    ],
+  },
+];
+
+const ICON_PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+const ICON_CLOCK = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 5h-2v6l5 3 1-1.7-4-2.3V7z"/></svg>';
+const ICON_INFO = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>';
+
+function render(lang) {
+  const t = UI[lang];
+  document.documentElement.lang = lang;
+  document.getElementById("t-title").textContent = t.title;
+  document.getElementById("t-sub").textContent = t.sub;
+  document.getElementById("t-back").textContent = t.back;
+  document.getElementById("btn-th").className = lang === "th" ? "active" : "";
+  document.getElementById("btn-en").className = lang === "en" ? "active" : "";
+
+  let html = `<div class="notice">${ICON_INFO}<div>${t.notice}</div></div>`;
+  for (const ch of CHAPTERS) {
+    html += `
+    <section class="chapter">
+      <div class="ch-head">
+        <div class="ch-num">${ch.num}</div>
+        <h2>${ch.title[lang]}</h2>
+      </div>
+      <p class="ch-meta">${ch.clips.length} ${t.clips}</p>
+      <div class="grid">`;
+    for (const c of ch.clips) {
+      html += `
+        <div class="card">
+          <div class="thumb">
+            <img src="thumbs/${c.thumb}.jpg" alt="" loading="lazy">
+            <div class="play"><span>${ICON_PLAY}</span></div>
+          </div>
+          <div class="body">
+            <div class="chips">
+              <span class="chip-id">${c.id}</span>
+              <span class="chip-kind ${c.kind}">${t[c.kind]}</span>
+            </div>
+            <div class="title">${c.title[lang]}</div>
+            <div class="desc">${c.desc[lang]}</div>
+            <div class="use">${c.use[lang]}</div>
+            <span class="soon">${ICON_CLOCK}${t.soon}</span>
+          </div>
+        </div>`;
+    }
+    html += `
+      </div>
+    </section>`;
+  }
+  html += `<footer>${t.footer}</footer>`;
+  document.getElementById("content").innerHTML = html;
+}
+
+function setLang(lang) {
+  try { localStorage.setItem("tr-lang", lang); } catch (e) {}
+  render(lang);
+}
+
+let lang = "th";
+try { lang = localStorage.getItem("tr-lang") || "th"; } catch (e) {}
+const urlLang = new URLSearchParams(location.search).get("lang");
+if (urlLang === "en" || urlLang === "th") lang = urlLang;
+render(lang);
+</script>
+</body>
+</html>
