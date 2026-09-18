@@ -187,7 +187,7 @@ const UI = {
     demo: "สาธิตกิจกรรม",
     soon: "เร็ว ๆ นี้",
     watch: "ดูวิดีโอ",
-    watchOther: "ดูวิดีโอ (ภาษาอังกฤษ)",
+    watchOther: "ดูวิดีโอ",
     footer: "คลิปความยาวประมาณ 1 ถึง 3 นาที มีคำบรรยายทั้งภาษาไทยและภาษาอังกฤษ",
   },
   en: {
@@ -212,6 +212,7 @@ const CHAPTERS = [
     title: { en: "What is Coding?", th: "การเขียนโปรแกรมคืออะไร" },
     clips: [
       { id: "T1", kind: "tech", thumb: "t1",
+        url: { en: "https://youtu.be/E-Py7yFCxfA" },
         use: { en: "Used in Chapters 1 & 4", th: "ใช้ในบทที่ 1 และ 4" },
         title: { en: "Configure the Robot via USB", th: "ตั้งค่าหุ่นยนต์ผ่าน USB" },
         desc: {
@@ -233,6 +234,7 @@ const CHAPTERS = [
           th: "ใส่ Robot ID ในเว็บแอปแล้วกด Upload บล็อกที่บันทึกไว้จะปรากฏขึ้น พร้อมให้แก้ไขและกด Run Code ผ่าน WiFi",
         } },
       { id: "D1", kind: "demo", thumb: "d1",
+        url: { th: "https://youtu.be/34Wjz4ldNCQ" },
         use: { en: "Activity 1.1", th: "กิจกรรมที่ 1.1" },
         title: { en: "Maze: Record, Replay, and the Moved Start", th: "เขาวงกต: บันทึก เล่นซ้ำ และย้ายตำแหน่งเริ่มต้น" },
         desc: {
@@ -240,6 +242,7 @@ const CHAPTERS = [
           th: "บันทึกเส้นทางในเขาวงกต เล่นซ้ำ 3 ครั้ง แล้วลองย้ายตำแหน่งเริ่มต้นเพื่อดูว่ารถหุ่นยนต์ไปไม่ถึงเป้าหมาย ประเด็นสำคัญของบทนี้ใน 90 วินาที",
         } },
       { id: "D4", kind: "demo", thumb: "d4",
+        url: { th: "https://youtu.be/4R5MgIDOMTc" },
         use: { en: "Activity 1.4", th: "กิจกรรมที่ 1.4" },
         title: { en: "Draw Patterns with the Repeat Block", th: "วาดลวดลายด้วยบล็อก Repeat" },
         desc: {
@@ -253,6 +256,11 @@ const CHAPTERS = [
     title: { en: "Sensors and Conditions", th: "การใช้งานเซ็นเซอร์และอุปกรณ์เอาต์พุต" },
     clips: [
       { id: "T4", kind: "tech", thumb: "t4",
+        url: { en: "https://youtu.be/uw4FapNtsRk" },
+        related: [{
+          url: "https://youtu.be/DdtbM_ThR34",
+          label: { en: "Download code and run", th: "ดาวน์โหลดและรันโปรแกรม" },
+        }],
         use: { en: "Used in Chapters 2–4", th: "ใช้ในบทที่ 2 ถึง 4" },
         title: { en: "Connect to code.gogoboard.org via USB", th: "เชื่อมต่อกับ code.gogoboard.org ผ่าน USB" },
         desc: {
@@ -268,6 +276,10 @@ const CHAPTERS = [
         } },
       { id: "D8", kind: "demo", thumb: "d8",
         url: { th: "https://youtu.be/FJJOhCvGXp8" },
+        related: [{
+          url: "https://youtu.be/aaJFGETpkG4",
+          label: { en: "Additional demo (Thai version)", th: "ดูคลิปสาธิตเพิ่มเติม" },
+        }],
         use: { en: "Activity 2.4", th: "กิจกรรมที่ 2.4" },
         title: { en: "Vibration-Pad Dinosaur Game Controller", th: "ควบคุมเกมไดโนเสาร์ด้วยแป้นเคาะ" },
         desc: {
@@ -281,6 +293,7 @@ const CHAPTERS = [
     title: { en: "Interactive Games with Sensors", th: "การสร้างเกมและควบคุมด้วยเซ็นเซอร์" },
     clips: [
       { id: "D12", kind: "demo", thumb: "d12",
+        url: { th: "https://youtu.be/tz7Ue9LvQpw" },
         use: { en: "Activity 3.2", th: "กิจกรรมที่ 3.2" },
         title: { en: "Dual-System Jump Game (GoGo Board + Scratch)", th: "เกมกระโดดแบบสองระบบ (GoGo Board + Scratch)" },
         desc: {
@@ -288,6 +301,7 @@ const CHAPTERS = [
           th: "การเขียนโปรแกรมคู่ขนานสองระบบ: เซ็นเซอร์ปุ่มส่งปุ่ม Space ทดสอบในโปรแกรมพิมพ์ข้อความก่อน แล้วคลิกหน้าต่าง Scratch เพื่อให้แมวกระโดด",
         } },
       { id: "D13", kind: "demo", thumb: "d13",
+        url: { th: "https://youtu.be/60onDa7P8bg" },
         use: { en: "Activity 3.3", th: "กิจกรรมที่ 3.3" },
         title: { en: "Running Race: Step Pad vs Microphone", th: "เกมวิ่งแข่ง: เซ็นเซอร์เหยียบกับไมโครโฟน" },
         desc: {
@@ -315,6 +329,7 @@ const CHAPTERS = [
           th: "วางลิงก์โมเดลในการ์ด Teachable Machine ตั้งหมายเลขช่องสัญญาณ แล้วใส่บล็อกรับส่งสัญญาณฝั่งบอร์ดให้ตรงกัน",
         } },
       { id: "D17", kind: "demo", thumb: "d17",
+        url: { th: "https://youtu.be/6OYZ-JxCbRc" },
         use: { en: "Activity 4.3", th: "กิจกรรมที่ 4.3" },
         title: { en: "Gesture-Controlled Robot Car", th: "รถหุ่นยนต์บังคับด้วยท่าทาง" },
         desc: {
@@ -361,6 +376,9 @@ function render(lang) {
       const action = href
         ? `<a class="btn" href="${href}" target="_blank" rel="noopener">${ICON_PLAY}${watchLabel}</a>`
         : `<span class="soon">${ICON_CLOCK}${t.soon}</span>`;
+      const related = (c.related || []).map(video =>
+        `<a class="btn" href="${video.url}" target="_blank" rel="noopener">${ICON_PLAY}${video.label[lang]}</a>`
+      ).join("");
       html += `
         <div class="card">
           ${thumb}
@@ -373,6 +391,7 @@ function render(lang) {
             <div class="desc">${c.desc[lang]}</div>
             <div class="use">${c.use[lang]}</div>
             ${action}
+            ${related}
           </div>
         </div>`;
     }
