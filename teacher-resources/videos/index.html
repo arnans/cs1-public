@@ -181,7 +181,7 @@ const UI = {
     title: "วิดีโอสาธิต Coding & Robotics",
     sub: "คลิปเทคนิคและคลิปสาธิตกิจกรรมของแต่ละบท สำหรับเปิดดูก่อนสอนหรือเปิดในชั้นเรียน",
     back: "← กลับไปหน้าสื่อการสอน",
-    notice: "คลิปกำลังทยอยถ่ายทำและเพิ่มเข้ามา คลิปที่ยังไม่เสร็จจะแสดงคำว่า เร็ว ๆ นี้",
+    notice: "คลิปทั้ง 13 เรื่องมีให้ดูทั้งภาษาไทยและภาษาอังกฤษ เลือกภาษาที่มุมขวาบน บางคลิปเปิดจาก Google Drive",
     clips: "คลิป",
     tech: "คลิปเทคนิค",
     demo: "สาธิตกิจกรรม",
@@ -194,7 +194,7 @@ const UI = {
     title: "Coding & Robotics Demo Videos",
     sub: "Technique and activity-demo clips for each chapter — preview before class or play as a live demo.",
     back: "← Back to teacher resources",
-    notice: "Clips are being filmed and added over time. Cards marked coming soon will get links as filming completes.",
+    notice: "All 13 clips are available in Thai and English. Use the language switch at the top right. Some clips open on Google Drive.",
     clips: "clips",
     tech: "Technique",
     demo: "Activity demo",
@@ -220,6 +220,7 @@ const CHAPTERS = [
           th: "ตั้งค่าหุ่นยนต์ 4 ขั้นตอนบน pgc.gogoboard.org: เชื่อมต่อผ่าน USB กรอกข้อมูล WiFi กำหนด Robot ID แล้วกดปุ่ม Configure Robot",
         } },
       { id: "T2", kind: "tech", thumb: "t2",
+        url: { en: "https://drive.google.com/file/d/18e91Ot9m-7FYVfBbsiwlP6ACOxF39Uwd/view", th: "https://drive.google.com/file/d/1hvpFTMJFua98lO4dqNKIW5oudLczTafc/view" },
         use: { en: "Used in Chapter 1", th: "ใช้ในบทที่ 1" },
         title: { en: "Record and Replay with the IR Remote", th: "บันทึกและเล่นซ้ำด้วยรีโมต IR" },
         desc: {
@@ -227,6 +228,7 @@ const CHAPTERS = [
           th: "บังคับหุ่นยนต์ด้วยรีโมต IR กดปุ่ม * เพื่อบันทึก กดปุ่ม # เพื่อเล่นซ้ำ และสังเกตไฟวิ่งสีม่วงขณะโปรแกรมทำงาน",
         } },
       { id: "T3", kind: "tech", thumb: "t3",
+        url: { en: "https://drive.google.com/file/d/1pGE4LdVDNX_jszroGc30BizCJ_4DufFs/view", th: "https://drive.google.com/file/d/1uA-pWVSsSPZkG_7zhEWUGUICh1-mkBu9/view" },
         use: { en: "Used in Chapter 1", th: "ใช้ในบทที่ 1" },
         title: { en: "Sync Recorded Blocks to the Webapp", th: "ซิงก์บล็อกที่บันทึกไว้ไปยังเว็บแอป" },
         desc: {
@@ -234,7 +236,7 @@ const CHAPTERS = [
           th: "ใส่ Robot ID ในเว็บแอปแล้วกด Upload บล็อกที่บันทึกไว้จะปรากฏขึ้น พร้อมให้แก้ไขและกด Run Code ผ่าน WiFi",
         } },
       { id: "D1", kind: "demo", thumb: "d1",
-        url: { th: "https://youtu.be/34Wjz4ldNCQ" },
+        url: { en: "https://drive.google.com/file/d/13RtMpSMNzZZ7M_zLHpXbBhznuuLE9X5T/view", th: "https://youtu.be/34Wjz4ldNCQ" },
         use: { en: "Activity 1.1", th: "กิจกรรมที่ 1.1" },
         title: { en: "Maze: Record, Replay, and the Moved Start", th: "เขาวงกต: บันทึก เล่นซ้ำ และย้ายตำแหน่งเริ่มต้น" },
         desc: {
@@ -242,7 +244,7 @@ const CHAPTERS = [
           th: "บันทึกเส้นทางในเขาวงกต เล่นซ้ำ 3 ครั้ง แล้วลองย้ายตำแหน่งเริ่มต้นเพื่อดูว่ารถหุ่นยนต์ไปไม่ถึงเป้าหมาย ประเด็นสำคัญของบทนี้ใน 90 วินาที",
         } },
       { id: "D4", kind: "demo", thumb: "d4",
-        url: { th: "https://youtu.be/4R5MgIDOMTc" },
+        url: { en: "https://drive.google.com/file/d/1X8MLfvxO4qVsxierD5wCuaRU_MGyW5AP/view", th: "https://youtu.be/4R5MgIDOMTc" },
         use: { en: "Activity 1.4", th: "กิจกรรมที่ 1.4" },
         title: { en: "Draw Patterns with the Repeat Block", th: "วาดลวดลายด้วยบล็อก Repeat" },
         desc: {
@@ -268,6 +270,7 @@ const CHAPTERS = [
           th: "เชื่อมต่อ GoGo Board ผ่าน USB ทดสอบด้วยเสียงบี๊บ และเข้าใจความแตกต่างระหว่าง Download กับ Run",
         } },
       { id: "T6", kind: "tech", thumb: "t6",
+        url: { en: "https://drive.google.com/file/d/1TZCnVMy5-ToncCUa5chwTTtdbdCdYy7k/view", th: "https://drive.google.com/file/d/12ifOfvDUh548SC951YVTL0A4VFRtFtbd/view" },
         use: { en: "Used in Chapters 2–4", th: "ใช้ในบทที่ 2 ถึง 4" },
         title: { en: "Send Keyboard Keys from the GoGo Board", th: "ส่งปุ่มกดแป้นพิมพ์จาก GoGo Board" },
         desc: {
@@ -275,7 +278,7 @@ const CHAPTERS = [
           th: "รูปแบบ ถ้าเซ็นเซอร์ทำงานให้ส่งปุ่มกด: ทดสอบในโปรแกรมพิมพ์ข้อความก่อน และระวังว่าปุ่มกดจะไปยังหน้าต่างที่คลิกไว้ล่าสุด เทคนิคที่ใช้บ่อยที่สุดในเล่ม",
         } },
       { id: "D8", kind: "demo", thumb: "d8",
-        url: { th: "https://youtu.be/FJJOhCvGXp8" },
+        url: { en: "https://drive.google.com/file/d/1M_HTupfETo8PUfGUm0pcf009s8d0OM73/view", th: "https://youtu.be/FJJOhCvGXp8" },
         related: [{
           url: "https://youtu.be/aaJFGETpkG4",
           label: { en: "Additional demo (Thai version)", th: "ดูคลิปสาธิตเพิ่มเติม" },
@@ -293,7 +296,7 @@ const CHAPTERS = [
     title: { en: "Interactive Games with Sensors", th: "การสร้างเกมและควบคุมด้วยเซ็นเซอร์" },
     clips: [
       { id: "D12", kind: "demo", thumb: "d12",
-        url: { th: "https://youtu.be/tz7Ue9LvQpw" },
+        url: { en: "https://drive.google.com/file/d/1YBRQ-cAbrzRje3q0A71GMBCbjPzO4rG6/view", th: "https://youtu.be/tz7Ue9LvQpw" },
         use: { en: "Activity 3.2", th: "กิจกรรมที่ 3.2" },
         title: { en: "Dual-System Jump Game (GoGo Board + Scratch)", th: "เกมกระโดดแบบสองระบบ (GoGo Board + Scratch)" },
         desc: {
@@ -301,7 +304,7 @@ const CHAPTERS = [
           th: "การเขียนโปรแกรมคู่ขนานสองระบบ: เซ็นเซอร์ปุ่มส่งปุ่ม Space ทดสอบในโปรแกรมพิมพ์ข้อความก่อน แล้วคลิกหน้าต่าง Scratch เพื่อให้แมวกระโดด",
         } },
       { id: "D13", kind: "demo", thumb: "d13",
-        url: { th: "https://youtu.be/60onDa7P8bg" },
+        url: { en: "https://drive.google.com/file/d/1ps1kPNQKvcoNdqBZnu-k16C6RnT4anch/view", th: "https://youtu.be/60onDa7P8bg" },
         use: { en: "Activity 3.3", th: "กิจกรรมที่ 3.3" },
         title: { en: "Running Race: Step Pad vs Microphone", th: "เกมวิ่งแข่ง: เซ็นเซอร์เหยียบกับไมโครโฟน" },
         desc: {
@@ -315,6 +318,7 @@ const CHAPTERS = [
     title: { en: "AI Control", th: "ฝึกใช้ AI ควบคุมหุ่นยนต์" },
     clips: [
       { id: "T8", kind: "tech", thumb: "t8",
+        url: { en: "https://drive.google.com/file/d/1qoPk0Z4Q-pkGG4tZMlDZYprvOGuaaNZE/view", th: "https://drive.google.com/file/d/1KYqRoCkv7vcoCpVlgK2mVK8sxr73LRDM/view" },
         use: { en: "Used in Chapter 4", th: "ใช้ในบทที่ 4" },
         title: { en: "Train a Model in Teachable Machine", th: "ฝึกโมเดลใน Teachable Machine" },
         desc: {
@@ -322,6 +326,7 @@ const CHAPTERS = [
           th: "สร้างโปรเจกต์ภาพพร้อมคลาส Other เก็บภาพหลากหลายมุม ฝึกโมเดล อ่านแถบความมั่นใจ แล้วกด Export Model เพื่อรับลิงก์สำหรับแชร์",
         } },
       { id: "T9", kind: "tech", thumb: "t9",
+        url: { en: "https://drive.google.com/file/d/1yPENQCYzUysE9zigO9R1YMTQnab41VMq/view", th: "https://drive.google.com/file/d/1SydHrZCy7H4D6lAYpsmQW0wZaasYgqKn/view" },
         use: { en: "Used in Chapter 4", th: "ใช้ในบทที่ 4" },
         title: { en: "Set Up a Broadcast Channel", th: "ตั้งค่าช่องสัญญาณ" },
         desc: {
@@ -329,7 +334,7 @@ const CHAPTERS = [
           th: "วางลิงก์โมเดลในการ์ด Teachable Machine ตั้งหมายเลขช่องสัญญาณ แล้วใส่บล็อกรับส่งสัญญาณฝั่งบอร์ดให้ตรงกัน",
         } },
       { id: "D17", kind: "demo", thumb: "d17",
-        url: { th: "https://youtu.be/6OYZ-JxCbRc" },
+        url: { en: "https://drive.google.com/file/d/1YSPMViAi_KZ3VrrFOJT2t_InOT1VS_tT/view", th: "https://youtu.be/6OYZ-JxCbRc" },
         use: { en: "Activity 4.3", th: "กิจกรรมที่ 4.3" },
         title: { en: "Gesture-Controlled Robot Car", th: "รถหุ่นยนต์บังคับด้วยท่าทาง" },
         desc: {
